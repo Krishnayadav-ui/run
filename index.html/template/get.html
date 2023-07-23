@@ -1,0 +1,58 @@
+{% extends 'nase.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emp Details Page</title>
+    <link rel="stylesheet" href="{% static "style.css" %}" type="text/css ">
+
+</head>
+
+<body id="b" style="background-image: url({% static 'img/ph.avif' %});">
+
+    
+
+    <div class="container-fluid" ;">
+        <table class="table my-5" style="background:local;">
+            <thead class="table-success">
+                <th style="background: local;">Employee Id</th>
+                <th style="background: local;">Employee Name</th>
+                <th style="background:local;">Employee Age</th>
+                <th style="background:local;">Employee Mobile</th>
+                <th style="background:local;">Employee  E-Mail</th>
+                <th style="background:local;">Employee City</th>
+                <th style="background:local;">Employee Salary</th>
+                <th style="background:local;">edit</th>
+                <th style="background:local;">Delete</th>
+            </thead>
+            <tbody>
+
+                {% for emp in employees%}
+                <tr>
+                    <th style="color: rgba(243, 237, 229, 0.678);" scope="row">{{ emp.eid }}</th>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.name }}</td>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.age }}</td>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.mobile }}</td>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.email }}</td>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.city }}</td>
+                    <td style="color: rgba(243, 237, 229, 0.678);">{{ emp.salary }}</td>
+                    <td ><a href="{% url 'editEmp' emp.eid %}" style="color: green;">Update</a></td>
+                    <td><a href="{% url 'deleteEmp' emp.eid %}" style="color: red;"  >Delete</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+
+
+</body>
+
+</html>
+
+{% endblock %}

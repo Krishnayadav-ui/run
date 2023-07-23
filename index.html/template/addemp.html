@@ -1,0 +1,88 @@
+{% extends 'nase.html' %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block content %}
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registerpage</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+    <style>
+        .f {
+            margin-left: 150px;
+            /* margin-top:100px; */
+            background:local;
+            color: rgb(236, 239, 243);
+            text-shadow: black;
+            width: 70%;
+            text-align: center;
+            height: auto;
+        }
+    </style>
+      <link rel="stylesheet" href="{% static "style.css" %}" type="text/css ">
+
+</head>
+
+<body id="b" style="background-image: url({% static 'img/lat.avif' %});">
+  
+
+    <div class="container my-4" >
+        <div class='main' >
+            <!-- Registration Form -->
+            <div class='d1' >
+
+                <form class="f py-3" action="{% url 'insertEmp'%}" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <caption >
+                        <h2 style="color: rgb(10, 5, 7);">Employee Form</h2>
+
+                    </caption>
+                    {% if msg %}
+                    <p style="font-size: 20px; color:yellow;"> {{msg}}</p>
+                    {% endif %}
+                    <hr>
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Id</label> {{ empform.eid }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Name</label> {{ empform.name }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Age</label> {{ empform.age }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Email</label> {{ empform.email }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Contact</label> {{ empform.mobile }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee Salary.</label> {{ empform.salary }}
+                    </div>
+
+                    <div class="col-md-12 py-3">
+                        <label for="exampleInputPassword1">Enter Employee City</label> {{ empform.city }}
+                    </div>
+
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="background-color: rgb(8, 8, 6) ;">Add Employee</button>
+                    <br>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+
+</html>
